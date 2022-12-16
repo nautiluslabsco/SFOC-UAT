@@ -6,7 +6,7 @@ import datetime
 
 
 def stl_finder(feature_dataset):
-    feature_name = "SFOC"
+    feature_name = "Shaft Power"
     slope_lim = 10
     i = 1
     n = 1
