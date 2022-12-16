@@ -12,7 +12,11 @@ def SFOC_rule1(stl_data,feature_dataset):
         else
             results=[pass]
 
-    print("SFOC Rule 1 check")
+
+
+
+
+    print("     |-> SFOC Rule 1 check")
     results=0
 
 

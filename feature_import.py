@@ -6,7 +6,7 @@ from pearls.app_env import AppEnv, get_app_env
 
 
 def feature_import(ship_id,feature_name,sample_size):
-    print("Importing data from features API...")
+    print("     |-> Importing data from features API...")
     #ship_id = 61
     #feature_name = 'SFOC'
     features_env = 'qa'
@@ -97,8 +97,8 @@ def feature_import(ship_id,feature_name,sample_size):
         logger.error(error_message)
         # yield get_slack_notification(slack_channel, error_message)
         #continue
-    print("SUCCESS!")
-    print("Accessing Features API...")
+    print("     |-> SUCCESS!")
+    print("     |-> Accessing Features API...")
     env=AppEnv(features_env)
     conf = __cfg__[env]
     c = NLClient(endpoint=conf["apiurl"])
@@ -113,7 +113,7 @@ def feature_import(ship_id,feature_name,sample_size):
         logger.error(error_message)
         # yield get_slack_notification(slack_channel, error_message)
     #continue
-    print("SUCCESS!")
+    print("     |-> SUCCESS!")
     data_set = features
 
     matching_feature_name = None
@@ -126,7 +126,7 @@ def feature_import(ship_id,feature_name,sample_size):
     #    logger.error(f'no feature named {feature_name} found')
     # continue
     # logger.info(f'using feature named {matching_feature_name}', ship_id=ship_id, feature=feature_name, condition=condition_name, threshold=threshold, slack_channel=slack_channel)
-    print("Features data capture Successful!")
+    print("     |-> Features data capture Successful!")
     #   return(data_set)
     return data_set
 
