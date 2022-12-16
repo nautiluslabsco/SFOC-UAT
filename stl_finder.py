@@ -40,6 +40,7 @@ def stl_finder(feature_dataset):
     seg_inc=1
     seg_len_temp=0
     seg_end=0
+    run_complete=False
     seg_start=0
     #print(NoneType)
     #y_dist_hrs=(ftr_data[0][2] - ftr_data[0][1])/(60*60*60)
@@ -72,14 +73,14 @@ def stl_finder(feature_dataset):
             n = i+1
             seg_complete=False
             seg_temp = np.array([0, 0, 0])
-            while seg_complete is False:
+            while seg_complete is False and run_complete is not True:
                 # data is not null and  next data is not null and slope is less than limit
                 if len(ftr_data[1]) < n+2:
                     #print('Found end of Segment!!!!')
                     #print("(Arrived at end of data)")
                     seg_end=len(ftr_data[1])
                     seg_complete=1
-                    exit()
+                    run_complete = True
                 elif type(ftr_data[1][n]) is NoneType or type(ftr_data[1][n+1]) is NoneType:
                     #print('Found end of Segment!!!!')
                     #print("(Next Datapoint is Null)")
@@ -111,7 +112,7 @@ def stl_finder(feature_dataset):
                 i = seg_end
 
 
-    if len(stl_results) <= 1:
+    if len(seg_report) <= 1:
         print('     |-> ERROR: No STL segments identified in this data set')
         print('...')
     else:

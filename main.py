@@ -1,6 +1,6 @@
 import feature_import as feature_import
 import stl_finder
-#import SFOC_rule1
+import SFOC_rule1
 
 # Config
 ship_id = 61
@@ -23,8 +23,9 @@ print("Segments Identified Successfully")
 
 ##-------------    SFOC Rules    ----------------------##
 # Rule 1 - Test min max of stl sections
-sfoc_1_results=SFOC_rule1(stl_data,feature_dataset)  #format = SectionID | Start | End | pass/fail | reason
-
+print("Running Rule 1")
+sfoc_1_results=SFOC_rule1.SFOC_rule1(stl_data)  #format = SectionID | Start | End | pass/fail | reason
+print("Rule One complete!")
 ##-----##
 # Rule 2 - ....
 

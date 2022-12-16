@@ -1,23 +1,27 @@
+from typing import List
+import numpy as np
+import sample_data
 
 
-def SFOC_rule1(stl_data,feature_dataset):
-
-    for i in stl_data
-        seg_min = minimum[stl_data[i]]
-        seg_max = maximum[stl_data[i]]
-        if seg_min < conf_min
-            resutls = [fail - seg values belove configured minimum]
-        else if seg_max > conf_max
-            results = [fail - seg values above configured maximum]
-        else
-            results=[pass]
-
-
-
-
+def SFOC_rule1(stl_data):
+    feature_dataset= sample_data.sample_data()
+    feature='SFOC'
+    temp_array=[]
+    n=1
+    print(stl_data)
+    #print(len(stl_data[1]))
+    while n < len(stl_data[1]):
+        #print(n)
+        start_pt = int(stl_data[n][1])
+        end_pt = int(stl_data [n][2])
+        temp_array= np.array(feature_dataset['means'][feature][start_pt:end_pt])
+        print('          |-> Analyzing ' , start_pt, ' -> ' , end_pt , ' ')
+        print( '                 Max = ', max(temp_array), '| Min = '. min(temp_array))
+        #print(temp_array)
+        n=n+1
 
     print("     |-> SFOC Rule 1 check")
+
     results=0
 
-
-    return (results)
+    return results
