@@ -10,4 +10,4 @@ features_data=features_dataset['means'][feature]
 
 features_dt=numpy.vstack((timestamps,features_data))
 
-print(features_dt)
+print(features_dt[1][150])
