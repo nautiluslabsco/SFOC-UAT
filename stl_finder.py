@@ -6,8 +6,8 @@ import datetime
 
 
 def stl_finder(feature_dataset):
-    feature_name = "Shaft Power"
-    slope_lim = 10
+    feature_name = "SFOC"
+    slope_lim = 1
     i = 1
     n = 1
     flat_len = 10  # hrs
@@ -28,7 +28,6 @@ def stl_finder(feature_dataset):
     #Response
     #print("Identifying Zero(ish) slope segments...")
     #print(len(dataset["timestamps"]))
-
 
     #initialize vars
     seg_report = np.array(['Segment ID', 'Start', 'End'])
