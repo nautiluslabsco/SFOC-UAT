@@ -86,7 +86,7 @@ def feature_import(ship_id,feature_name,sample_size):
     # features_env = 'qa' if env == 'local' else env
 
     # env = get_app_env()
-    print("Creating App Client...")
+    print("   |-> Creating App Client...")
     nlclient = make_client(env=AppEnv(features_env))
     end_time = datetime.datetime.utcnow()
     start_time = end_time - datetime.timedelta(days=sample_size)
@@ -98,7 +98,7 @@ def feature_import(ship_id,feature_name,sample_size):
         # yield get_slack_notification(slack_channel, error_message)
         #continue
     print("     |-> SUCCESS!")
-    print("     |-> Accessing Features API...")
+    print("   |-> Requesting features data...")
     env=AppEnv(features_env)
     conf = __cfg__[env]
     c = NLClient(endpoint=conf["apiurl"])
@@ -126,7 +126,7 @@ def feature_import(ship_id,feature_name,sample_size):
     #    logger.error(f'no feature named {feature_name} found')
     # continue
     # logger.info(f'using feature named {matching_feature_name}', ship_id=ship_id, feature=feature_name, condition=condition_name, threshold=threshold, slack_channel=slack_channel)
-    print("     |-> Features data capture Successful!")
+    print("   |-> Features data capture Successful!")
     #   return(data_set)
     return data_set
 
