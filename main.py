@@ -1,14 +1,22 @@
 import feature_import as feature_import
 import stl_finder
 import SFOC_rule1
+from datetime import datetime
+import time
+import csv
 
 # Config
 print(" ")
 print("-------------------- Features Ruleset Engine--------------------")
 ship_id = 61
 feature_name = 'SFOC'
-sample_size= 30  # Days
-results_file_name = "%s_test_ship_%s.csv" % (feature_name, ship_id)
+sample_size= 150  # Days
+now=datetime.now()
+current_time = now.strftime("%m%d%Y %H%M%S")
+results_file_name = "%s_test_ship_%s %s.csv" % (feature_name, ship_id, current_time)
+
+print("Date: ", now.strftime("%m/%d/%Y"))
+print("Time: ", now.strftime("%H:%M:%S"))
 print(" ")
 print("      Configuration: ")
 print("       |->Ship ID:", str(ship_id))
@@ -51,8 +59,19 @@ print("-----------RESULTS-----------")
 print(sfoc_1_results)
 #print("*imagine this is formatted better")
 ##----##
-print("")
-# Print UAT Report
 
-#print('SectionID | Start | End | pass/fail | reason')
+#Print UAT Report
+
+file=open(results_file_name, 'a+' , newline = '')
+
+with file:
+    write = csv.writer(file)
+    write.writerows(sfoc_1_results)
+
+
+#Close File
+file.close()
+print("")
 print("-------------------- Goodbye --------------------")
+
+

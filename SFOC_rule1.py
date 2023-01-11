@@ -6,8 +6,8 @@ import sample_data
 def SFOC_rule1(stl_data):
     feature_dataset= sample_data.sample_data()
     feature='SFOC'
-    SFOC_min = 150
-    SFOC_max = 220
+    SFOC_min = 100
+    SFOC_max = 550
     NoneType = type(None)
     #temp_array=[]
     results = np.array(["Segment ID", "start_pt", "end_pt", "Result", "Reason"])
@@ -18,10 +18,15 @@ def SFOC_rule1(stl_data):
     while n < len(stl_data[1])-1:
         #print(n)
         start_pt = int(stl_data[n][1])
+        #print(start_pt)
         end_pt = int(stl_data [n][2])
+        #print(end_pt)
         temp_array= np.array(feature_dataset['means'][feature][start_pt:end_pt])
-        mod_array = [i for i in temp_array if i is not None]
-
+        #mod_array = [i for i in temp_array if i is not None]
+        conv = lambda i: i or 0
+        mod_array = [conv(i) for i in temp_array]
+        #print(temp_array)
+        #print (mod_array)
         #temp_array[temp_array == None] = 0
         #np.place(temp_array, temp_array == NoneType, 0)
         #print(type(mod_array))
