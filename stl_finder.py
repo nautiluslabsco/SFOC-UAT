@@ -73,12 +73,13 @@ def stl_finder(feature_dataset):
             seg_complete=False
             seg_temp = np.array([0, 0, 0])
             while seg_complete is False and run_complete is not True:
+               # run_complete = False
                 # data is not null and  next data is not null and slope is less than limit
                 if len(ftr_data[1]) < n+2:
                     #print('Found end of Segment!!!!')
                     #print("(Arrived at end of data)")
                     seg_end=len(ftr_data[1])
-                    seg_complete=1
+                    seg_complete= True
                     run_complete = True
                 elif type(ftr_data[1][n]) is NoneType or type(ftr_data[1][n+1]) is NoneType:
                     #print('Found end of Segment!!!!')
@@ -92,6 +93,8 @@ def stl_finder(feature_dataset):
                     seg_end = n
                     i = seg_end
                     n = n + 1
+                    seg_complete = True
+
 
             if seg_end-seg_start > flat_len:
                 #record data to table
@@ -117,6 +120,7 @@ def stl_finder(feature_dataset):
     else:
         print("     |-> Complete... returning results")
         return seg_report
+
     # return format = SectionID | Start  | End
 
 
