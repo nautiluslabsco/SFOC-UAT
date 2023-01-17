@@ -113,10 +113,11 @@ def stl_finder(feature_dataset):
                 seg_end = n
                 i = seg_end
 
-
+    print(seg_report)
     if len(seg_report) <= 1:
         print('     |-> ERROR: No STL segments identified in this data set')
         print('...')
+        return [0, 0, 0, 0]
     else:
         print("     |-> Complete... returning results")
         return seg_report

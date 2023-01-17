@@ -4,6 +4,7 @@ import SFOC_rule1
 from datetime import datetime
 import time
 import csv
+import sys
 
 # Config
 print(" ")
@@ -37,8 +38,12 @@ print("")
 print("Identifying straight-line (stl) segments of the data (constant speed for configured time)")
 stl_data = stl_finder.stl_finder(feature_dataset)
 # return format = SectionID | Start  | End
-print("Segments Identified Successfully!")
+print("STL Finder Ran Successfully!")
 print("")
+
+##--QUIT IF NO STL--##
+if len(stl_data)<=3:
+    sys.exit("ERROR:NO STRAIGHT LINE SEGMENTS FOUND IN DATA... \n exiting program...")
 
 ##-------------    SFOC Rules    ----------------------##
 # Rule 1 - Test min max of stl sections
