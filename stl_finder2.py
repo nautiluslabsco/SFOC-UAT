@@ -45,6 +45,7 @@ def stl_finder2(feature_dataset):
                 seg_found = True
                 print('Reached end of features data')
                 data_remaining = False
+                break
             else:
                 x1 = ftr_data['timestamps'][seg_start]
                 y1 = ftr_data['means']['Shaft Power'][seg_start]
@@ -62,13 +63,13 @@ def stl_finder2(feature_dataset):
                 data_remaining = False
             else:
                 if ftr_data['means']['Shaft Power'][n] == 0:
-                    curr_slope=last_slope
+                    curr_slope=abs(last_slope)
                 if ftr_data['means']['Shaft Power'][n] is None:
-                    curr_slope=last_slope
+                    curr_slope=abs(last_slope)
                 if ftr_data['timestamps'][n] is None:
-                    curr_slope=last_slope
+                    curr_slope=abs(last_slope)
                 if ftr_data['timestamps'][n] == 0:
-                    curr_slope=last_slope
+                    curr_slope=abs(last_slope)
             # feature data is not null is segment is not found
             #print('Continue looking for segment if features data is not null')
 
@@ -76,6 +77,7 @@ def stl_finder2(feature_dataset):
                     seg_found= True
                     print('Reached end of features data')
                     data_remaining = False
+                    break
                 else:
                     x1 = ftr_data['timestamps'][seg_start]
                     y1 = ftr_data['means']['Shaft Power'][seg_start]
@@ -99,7 +101,8 @@ def stl_finder2(feature_dataset):
                         n=n+1
                         #print('restarted the variables for segment finder')
                         curr_slope = slope_func(x1, xn, y1, yn,last_slope)
-                        seg_found = True
+
+
                 seg_end=seg_end+1
                 if slope_func(x1, xn, y1, yn,last_slope) >= slope_lim:
                     n=n+1
@@ -111,8 +114,6 @@ def stl_finder2(feature_dataset):
     if seg_temp[5] >= seg_min:
         seg_temp = np.array([seg_inc, seg_start, seg_end, seg_start, seg_end, curr_delta_hrs])
         #record on table
-        seg_temp_last = seg_temp
-
         if seg_temp[2] != seg_temp_last[2]:
             seg_report_temp = np.vstack((seg_report, seg_temp))
             seg_report = seg_report_temp
@@ -120,12 +121,15 @@ def stl_finder2(feature_dataset):
         else:
             print('STL found... findiing end')
         n=n+1
+        seg_temp_last = seg_temp
         curr_slope = slope_func(x1, xn, y1, yn,last_slope)
-        seg_start_new=n
+
+
 
         seg_start_last=seg_temp[5]
-
-        seg_found = True
+        seg_inc=seg_inc+1
+        seg_start=n+1
+        seg_found = False
         #if seg_end-seg_start <= seg_min:
          #   n=n+1
 
@@ -134,7 +138,7 @@ def stl_finder2(feature_dataset):
         if slope_func(x1, xn, y1, yn, last_slope) <= slope_lim:
             n=n+1
         #print(curr_slope)
-        seg_start = seg_start_new
+        seg_start_new = seg_start
         n=n+1
 
     n=n+1
