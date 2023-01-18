@@ -40,14 +40,15 @@ print("")
 print("Identifying straight-line (stl) segments of the data (constant speed for configured time)")
 #stl_data = stl_finder.stl_finder(feature_dataset)
 stl_data = stl_finder2.stl_finder2(feature_dataset)
+print(stl_data)
 # return format = SectionID | Start  | End
 print("STL Finder Ran Successfully!")
 print("")
 
-print(stl_data)
+
 
 ##--QUIT IF NO STL--##
-if len(stl_data)<=2:
+if len(stl_data) <= 2:
     sys.exit("ERROR:NO STRAIGHT LINE SEGMENTS FOUND IN DATA... \n exiting program...")
 
 ##-------------    SFOC Rules    ----------------------##
