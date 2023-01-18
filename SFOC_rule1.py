@@ -4,7 +4,8 @@ import sample_data
 
 
 def SFOC_rule1(stl_data):
-    feature_dataset= sample_data.sample_data()
+    #feature_dataset= sample_data.sample_data()
+    feature_dataset=stl_data
     feature='SFOC'
     SFOC_min = 100
     SFOC_max = 550

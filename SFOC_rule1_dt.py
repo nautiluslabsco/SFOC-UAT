@@ -20,7 +20,7 @@ def SFOC_rule1_dt(stl_data):
         #start_pt = int(stl_data[n][1])
         start_pt =stl_data[n][1]
         #print(start_pt)
-        #end_pt = int(stl_data[n][2])
+        end_pt = int(stl_data[n][2])
         end_pt = stl_data[n][2]
         #print(end_pt)
         temp_array= np.array(feature_dataset['means'][feature][start_pt:end_pt])

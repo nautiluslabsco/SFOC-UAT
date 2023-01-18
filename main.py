@@ -1,3 +1,4 @@
+import SFOC_rule1_dt
 import feature_import as feature_import
 import stl_finder
 import stl_finder2
@@ -12,7 +13,7 @@ print(" ")
 print("-------------------- Features Ruleset Engine--------------------")
 ship_id = 61
 feature_name = 'SFOC'
-sample_size= 150  # Days
+sample_size= 30  # Days
 now=datetime.now()
 current_time = now.strftime("%m%d%Y %H%M%S")
 results_file_name = "%s_test_ship_%s %s.csv" % (feature_name, ship_id, current_time)
@@ -43,14 +44,16 @@ stl_data = stl_finder2.stl_finder2(feature_dataset)
 print("STL Finder Ran Successfully!")
 print("")
 
+print(stl_data)
+
 ##--QUIT IF NO STL--##
-if len(stl_data)<=3:
+if len(stl_data)<=2:
     sys.exit("ERROR:NO STRAIGHT LINE SEGMENTS FOUND IN DATA... \n exiting program...")
 
 ##-------------    SFOC Rules    ----------------------##
 # Rule 1 - Test min max of stl sections
 print("Running Rule 1 over STL segments")
-sfoc_1_results=SFOC_rule1.SFOC_rule1(stl_data)  #format = SectionID | Start | End | pass/fail | reason
+#sfoc_1_results=SFOC_rule1_dt.SFOC_rule1_dt(stl_data)  #format = SectionID | Start | End | pass/fail | reason
 print("Compiling Results...")
 print("")
 
@@ -63,7 +66,7 @@ print("")
 ##-------------    UAT Report    ---------------------##
 # Assemble Results
 print("-----------RESULTS-----------")
-print(sfoc_1_results)
+#print(sfoc_1_results)
 #print("*imagine this is formatted better")
 ##----##
 
@@ -73,7 +76,7 @@ file=open(results_file_name, 'a+' , newline = '')
 
 with file:
     write = csv.writer(file)
-    write.writerows(sfoc_1_results)
+    #write.writerows(sfoc_1_results)
 
 
 #Close File

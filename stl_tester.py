@@ -1,19 +1,26 @@
 import sample_data
 import stl_finder2
 import SFOC_rule1_dt
+from datetime import datetime
+import csv
 
 feature_dataset= sample_data.sample_data()
 #print(feature_dataset['means']['Shaft Power'])
 
 stl_data = stl_finder2.stl_finder2(feature_dataset)
 
-#print (stl_data)
+print (stl_data)
 
+# Config
+print(" ")
+print("-------------------- Features Ruleset Engine--------------------")
+ship_id = 61
+feature_name = 'SFOC'
+sample_size= 150  # Days
+now=datetime.now()
+current_time = now.strftime("%m%d%Y %H%M%S")
+results_file_name = "%s_test_ship_%s %s.csv" % (feature_name, ship_id, current_time)
 
-
-
-
-sfoc_1_results=SFOC_rule1_dt.SFOC_rule1_dt(stl_data)  #format = SectionID | Start | End | pass/fail | reason
 print("Compiling Results...")
 print("")
 
@@ -26,7 +33,6 @@ print("")
 ##-------------    UAT Report    ---------------------##
 # Assemble Results
 print("-----------RESULTS-----------")
-print(sfoc_1_results)
 #print("*imagine this is formatted better")
 ##----##
 
@@ -36,7 +42,7 @@ file=open(results_file_name, 'a+' , newline = '')
 
 with file:
     write = csv.writer(file)
-    write.writerows(sfoc_1_results)
+    write.writerows(' ')
 
 
 #Close File
