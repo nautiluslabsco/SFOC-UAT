@@ -35,7 +35,7 @@ def stl_finder2(feature_dataset):
         seg_start = seg_start_new
         seg_start=n
         print(n)
-        if n == 702:
+        if n == len(ftr_data['timestamps'])-8:
             print('hello')
 
         while n+1 <= len(ftr_data['timestamps']):
