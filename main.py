@@ -1,5 +1,6 @@
 import feature_import as feature_import
 import stl_finder
+import stl_finder2
 import SFOC_rule1
 from datetime import datetime
 import time
@@ -36,7 +37,8 @@ print("")
 
 ##-----------     STL Finder    -----------------------##
 print("Identifying straight-line (stl) segments of the data (constant speed for configured time)")
-stl_data = stl_finder.stl_finder(feature_dataset)
+#stl_data = stl_finder.stl_finder(feature_dataset)
+stl_data = stl_finder2.stl_finder2(feature_dataset)
 # return format = SectionID | Start  | End
 print("STL Finder Ran Successfully!")
 print("")
