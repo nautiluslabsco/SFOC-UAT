@@ -39,8 +39,8 @@ print("")
 ##-----------     STL Finder    -----------------------##
 print("Identifying straight-line (stl) segments of the data (constant speed for configured time)")
 #stl_data = stl_finder.stl_finder(feature_dataset)
-stl_data = stl_finder2.stl_finder2(feature_dataset)
-print(stl_data)
+#stl_data = stl_finder2.stl_finder2(feature_dataset)
+#print(stl_data)
 # return format = SectionID | Start  | End
 print("STL Finder Ran Successfully!")
 print("")
@@ -48,8 +48,8 @@ print("")
 
 
 ##--QUIT IF NO STL--##
-if len(stl_data) <= 2:
-    sys.exit("ERROR:NO STRAIGHT LINE SEGMENTS FOUND IN DATA... \n exiting program...")
+#if len(stl_data) <= 2:
+#    sys.exit("ERROR:NO STRAIGHT LINE SEGMENTS FOUND IN DATA... \n exiting program...")
 
 ##-------------    SFOC Rules    ----------------------##
 # Rule 1 - Test min max of stl sections
