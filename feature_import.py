@@ -115,6 +115,8 @@ def feature_import(ship_id,feature_name,sample_size):
     #continue
     print("     |-> SUCCESS!")
     data_set = features
+    #data_set = drop_nones_inplace(features)
+
 
     matching_feature_name = None
     feature_data = []
@@ -128,5 +130,7 @@ def feature_import(ship_id,feature_name,sample_size):
     # logger.info(f'using feature named {matching_feature_name}', ship_id=ship_id, feature=feature_name, condition=condition_name, threshold=threshold, slack_channel=slack_channel)
     print("   |-> Features data capture Successful!")
     #   return(data_set)
+
     return data_set
+
 

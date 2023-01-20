@@ -3,9 +3,8 @@ import numpy as np
 import sample_data
 
 
-def SFOC_rule1(stl_data):
-    #feature_dataset= sample_data.sample_data()
-    feature_dataset=stl_data
+def SFOC_rule1_dt(stl_data):
+    feature_dataset= sample_data.sample_data()
     feature='SFOC'
     SFOC_min = 100
     SFOC_max = 550
@@ -18,9 +17,11 @@ def SFOC_rule1(stl_data):
     print("     |-> SFOC Rule 1 check")
     while n < len(stl_data[1])-1:
         #print(n)
-        start_pt = int(stl_data[n][1])
+        #start_pt = int(stl_data[n][1])
+        start_pt =stl_data[n][1]
         #print(start_pt)
         end_pt = int(stl_data[n][2])
+        end_pt = stl_data[n][2]
         #print(end_pt)
         temp_array= np.array(feature_dataset['means'][feature][start_pt:end_pt])
         #mod_array = [i for i in temp_array if i is not None]
